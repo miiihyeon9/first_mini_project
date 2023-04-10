@@ -23,36 +23,38 @@
     // 게시판 정보 테이블 전체 카운트  획득 
     $result_cnt = select_board_info_count();
 
-    // max page number
+    // max page number(전체페이지수)
     $max_page_number = ceil((int)$result_cnt[0]["cnt"]/$limit_num);
     // echo $max_page_number;
     // var_dump($max_page_number);
-
+    
     $arr_prepare = 
-                array
+    array
                 (
                     "limit_num" => $limit_num
                     ,"offset" => $offset
                 );
-    $result_paging = select_board_info_paging($arr_prepare);
-    // print_r($result_paging);
-
-
-
-    // // 이전페이지, 다음페이지 버튼 만들기 
+                $result_paging = select_board_info_paging($arr_prepare);
+                // print_r($result_paging);
+                
+                
+                
+                
+                // // 이전페이지, 다음페이지 버튼 만들기 
+                // $http_host = $_SERVER['HTTP_HOST'];
     // $current_url = $_SERVER['REQUEST_URI'];
-    // $prev_page = $page - 1;
-    // if ($prev_page > 0) {
-    //     $prev_url = strtok($current_url, '?') . '?page=' . $prev_page;
-    //     echo "<a href=\"$prev_url\">이전 페이지</a>";
-    // }
-
+    // $url = 'http://'.$http_host.$request_url;
+    // $prev_page = $page_num - 1;
+    
+    // $http_referer = $_SERVER['HTTP_REFERER'];
+    
+    
     // // 다음 페이지 URL 구하기
     // $next_page = $page + 1;
     // $next_url = strtok($current_url, '?') . '?page=' . $next_page;
     // echo "<a href=\"$next_url\">다음 페이지</a>";
-
-?>
+    
+    ?>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -72,48 +74,76 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap" rel="stylesheet">        <title>게시판</title>
     </head>
-<body>
-    <h1>Boarder</h1>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-            <th>게시글 번호</th>
-            <th>게시글 제목</th>
-            <th>작성일자</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+    <body>
+        <h1>Boarder</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>게시글 번호</th>
+                    <th>게시글 제목</th>
+                    <th>작성일자</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
                 foreach( $result_paging as $recode)
                 {
-            ?>
+                    ?>
                     <tr>
                         <td><?php echo $recode["board_no"] ?></td>
                         <td><?php echo $recode["board_title"] ?></td>
                         <td><?php echo $recode["board_write_date"] ?></td>
                     </tr>    
-            <?php
+                    <?php
                 }
-            ?>
+                ?>
         </tbody>
     </table>
-                <!-- <button><a href=""></a></button> -->
-            
-            <?php
-                for( $i= 1; $i <= $max_page_number ; $i++ )
-                {
-            ?>
+    
+    <?php 
+    // $current_page = (int)$_GET["page_num"] ;
+    // ? $_GET["page_num"] : 1; // 현재 페이지 번호를 가져옵니다.
+    if($page_num > 1)
+    {
+        $prev_page = $page_num - 1;
+        ?>
+
+        <div class="page_list" ><a href='board_list.php?page_num=<?php echo $prev_page ?>'> < </a></div>
+        
+        
+        <?php
+    }
+    ?>
+
+                <?php
+                    for( $i= 1; $i <= $max_page_number ; $i++ )
+                    {
+                ?>
                     <div class="page_list"><a href='board_list.php?page_num=<?php echo $i?>'><?php echo $i ?></a></div>
-            <?php
-                }
-            // get 방식 : url뒤에 이동할 페이지를 
-            // post 방식 : 숨겨서 이동 
-            // string
-            ?>
+                <?php
+                    }
+                // get 방식 : url뒤에 이동할 페이지를 
+                // post 방식 : 숨겨서 이동 
+                // string
+                ?>
+    <?php 
 
-                <!-- <button><a href=""></a></button> -->
+    if($page_num < 5)
+    {
+        $next_page = $page_num + 1;
+        ?>
 
-    </body>
+        <div class="page_list" ><a href='board_list.php?page_num=<?php echo $next_page ?>'> > </a></div>
+        
+        
+        <?php
+    }
+    ?>
+    
+
+<!-- <button><a href=""></a></button> -->
+
+</body>
 </html>
 
 <!-- PS D:\Students\first_mini_project> xcopy D:\Students\first_mini_project\src  C:\Apache24\htdocs\src /e /h /f /y -->

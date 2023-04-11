@@ -26,7 +26,7 @@
     // max page number(전체페이지수)
     $max_page_number = ceil((int)$result_cnt[0]["cnt"]/$limit_num);
     // echo $max_page_number;
-    var_dump($result_cnt);
+    
 
 
     
@@ -50,6 +50,9 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap" rel="stylesheet">        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
         <title>게시판</title>
     </head>
     <body>

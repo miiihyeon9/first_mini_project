@@ -61,6 +61,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/board_update.css" type="text/css" >
 </head>
 <body>
@@ -77,7 +80,7 @@
         <input type="text" id = "title" name="board_title" value = "<?php echo $result_info['board_title'] ?>" >
         
         <label for="contents">게시글 내용</label>
-        <input type="text" id="contents" name="board_contents" value = "<?php echo $result_info['board_contents'] ?>" >
+        <textarea id="contents" name="board_contents" value = "<?php echo $result_info['board_contents'] ?>" ></textarea>
         
         <button type="submit">수정</button>
         <button><a href="board_list.php?page_num=<?php echo $page_num ?>">리스트</a></button>

@@ -26,33 +26,17 @@
     // max page number(전체페이지수)
     $max_page_number = ceil((int)$result_cnt[0]["cnt"]/$limit_num);
     // echo $max_page_number;
-    // var_dump($max_page_number);
+    var_dump($result_cnt);
+
+
     
     $arr_prepare = 
-    array
+                array
                 (
                     "limit_num" => $limit_num
                     ,"offset" => $offset
                 );
-                $result_paging = select_board_info_paging($arr_prepare);
-                // print_r($result_paging);
-                
-                
-                
-                
-                // // 이전페이지, 다음페이지 버튼 만들기 
-                // $http_host = $_SERVER['HTTP_HOST'];
-    // $current_url = $_SERVER['REQUEST_URI'];
-    // $url = 'http://'.$http_host.$request_url;
-    // $prev_page = $page_num - 1;
-    
-    // $http_referer = $_SERVER['HTTP_REFERER'];
-    
-    
-    // // 다음 페이지 URL 구하기
-    // $next_page = $page + 1;
-    // $next_url = strtok($current_url, '?') . '?page=' . $next_page;
-    // echo "<a href=\"$next_url\">다음 페이지</a>";
+    $result_paging = select_board_info_paging($arr_prepare);
     
     ?>
 
@@ -62,89 +46,118 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- 부트스트랩 CSS -->
-        <!-- <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-        crossorigin="anonymous"
-        /> -->
-        <link rel="stylesheet" href="./css/board_list.css">
+        <link rel="stylesheet" href="./css/board_list.css" type="text/css" >
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap" rel="stylesheet">        <title>게시판</title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap" rel="stylesheet">        
+        <title>게시판</title>
     </head>
     <body>
-        <h1>Boarder</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>게시글 번호</th>
-                    <th>게시글 제목</th>
-                    <th>작성일자</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                foreach( $result_paging as $recode)
-                {
-                    ?>
+        <header>
+            <h1>BOARD</h1>
+            <div class="tree_img"></div>
+        </header>
+        <main>
+            <table>
+                <thead>
                     <tr>
-                        <td><?php echo $recode["board_no"] ?></td>
-                        <td><?php echo $recode["board_title"] ?></td>
-                        <td><?php echo $recode["board_write_date"] ?></td>
-                    </tr>    
+                        <th>게시글 번호</th>
+                        <th>게시글 제목</th>
+                        <th>작성일자</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <?php
-                }
+                        foreach( $result_paging as $recode)
+                        {
+                            ?>
+                            <tr>
+                                <td><?php echo $recode["board_no"] ?></td>
+                                <td ><a class="table_list" href="board_update.php?board_no=<?php echo $recode["board_no"] ?>&&page_num=<?php echo $page_num ?>"><?php echo $recode["board_title"] ?></a></td>
+                                <td><?php echo $recode["board_write_date"] ?></td>
+                            </tr>    
+                            <?php
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </main>
+        <footer>
+            <?php 
+                    if($page_num > 11)
+                    {
+                    $ten_prev_page = $page_num - 10;
+                    }else
+                    {
+                        $ten_prev_page = 1;
                 ?>
-        </tbody>
-    </table>
-    
-    <?php 
-    // $current_page = (int)$_GET["page_num"] ;
-    // ? $_GET["page_num"] : 1; // 현재 페이지 번호를 가져옵니다.
-    if($page_num > 1)
-    {
-        $prev_page = $page_num - 1;
-        ?>
 
-        <div class="page_list" ><a href='board_list.php?page_num=<?php echo $prev_page ?>'> < </a></div>
-        
-        
-        <?php
-    }
-    ?>
+                <div class="page_list" ><a href='board_list.php?page_num=<?php echo $ten_prev_page ?>'> << </a></div>
+                <?php
+                    }
+                ?>
+
+                <?php  
+
+                    if($page_num > 1)
+                    {
+                    $prev_page = $page_num - 1;
+                    // }
+                    // else
+                    // {
+                    // $prev_page = 1;
+                    
+                    ?>
+
+                <div class="page_list" ><a href='board_list.php?page_num=<?php echo $prev_page ?>'> < </a></div>
+                    
+                <?php
+                    }
+                ?>
 
                 <?php
                     for( $i= 1; $i <= $max_page_number ; $i++ )
                     {
                 ?>
                     <div class="page_list"><a href='board_list.php?page_num=<?php echo $i?>'><?php echo $i ?></a></div>
+
+                <?php
+                                
+                }
+                            // get 방식 : url뒤에 이동할 페이지를 
+                            // post 방식 : 숨겨서 이동 
+                            // string
+                ?>
+                <?php 
+
+                    if($page_num < $max_page_number)
+                    {
+                        $next_page = $page_num + 1;
+                ?>  
+
+                    <div class="page_list " ><a href='board_list.php?page_num=<?php echo $next_page ?>'> > </a></div>
+                            
                 <?php
                     }
-                // get 방식 : url뒤에 이동할 페이지를 
-                // post 방식 : 숨겨서 이동 
-                // string
                 ?>
-    <?php 
 
-    if($page_num < 5)
-    {
-        $next_page = $page_num + 1;
-        ?>
-
-        <div class="page_list" ><a href='board_list.php?page_num=<?php echo $next_page ?>'> > </a></div>
-        
-        
-        <?php
-    }
-    ?>
-    
-
-<!-- <button><a href=""></a></button> -->
-
+                <?php 
+                
+                    $max_ten_min_page_number = $max_page_number - 10 ; 
+                    if($page_num < $max_ten_min_page_number)
+                    {
+                        $ten_next_page = $page_num + 10;
+                            
+                    }else
+                    {
+                        $ten_next_page = $max_page_number;
+                ?>
+                
+                    <div class="page_list" ><a href='board_list.php?page_num=<?php echo $ten_next_page ?>'> >> </a></div>
+                <?php
+                    }
+                ?> 
+            </div>
+    </footer>
 </body>
 </html>
-
-<!-- PS D:\Students\first_mini_project> xcopy D:\Students\first_mini_project\src  C:\Apache24\htdocs\src /e /h /f /y -->
-<!-- //                                                복사하고싶은 파일                     복사할 장소         파일이 있으면 덮어쓰고, 파일의 형태 복사, 디렉토리 비어있을 때 해당 디렉토리 복사, 숨김파일 복사  -->

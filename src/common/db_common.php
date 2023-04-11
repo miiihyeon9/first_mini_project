@@ -10,7 +10,7 @@ function db_conn( &$param_conn )
 {
     $host = "localhost"; // 원래는 아이피가 들어감
     $user = "root";      // user
-    $password = "0809";   //password
+    $password = "root506";   //password
     $name = "board";     // DB name
     $charset = "utf8mb4";    //charset
     $dns = "mysql:host=".$host.";dbname=".$name.";charset=".$charset;
@@ -85,19 +85,6 @@ function select_board_info_paging( &$param_arr )
     return $result_paging;
 }
 
-// TODO : test Start 
-// $arr = 
-//     array
-//     (
-//         "limit_num" => 5
-//         ,"offset"   => 0
-//     );
-
-// $result = select_board_info_paging($arr);
-
-// print_r($result);
-
-// TODO : test End
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 // 함수     : select_board_info_count()
@@ -105,7 +92,6 @@ function select_board_info_paging( &$param_arr )
 // 파라미터 : X
 // 리턴값   : $result_count
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-
 
 
 function select_board_info_count()
@@ -142,6 +128,105 @@ function select_board_info_count()
 }
 
 
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+// 함수     : select_board_info_no()
+// 기능     : 게시판 특정 게시글 정보 검색 
+// 파라미터 : INT &%param_no
+// 리턴값   : ARRAY $result
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+function select_board_info_no( &$param_no )
+{
+    $sql = " SELECT "
+            ." board_no "
+            ." ,board_title "
+            ." ,board_contents "
+            ." FROM "
+            ." board_info "
+            ." WHERE "
+            ." board_no = "
+            ." :board_no "            
+            ;
+
+    $arr_prepare = 
+                array(
+                    ":board_no"=>$param_no
+                );
+
+    $conn = null;
+    try 
+    {
+        db_conn( $conn );
+        $stmt = $conn->prepare( $sql );
+        $stmt->execute( $arr_prepare );
+        $result = $stmt->fetchALL();
+    } 
+    catch (Exception $e) 
+    {
+        return $e->getMessage();
+    }
+    finally
+    {
+        $conn = null;//     데이터베이스 종료
+    }
+    return $result[0];
+}
+
+
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+// 함수명  : update_board_info_no
+// 기능    : 게시판 특정 게시글 수정
+// 파라미터 : Array &$param_arr
+// 리턴값   : INT/STRING   $result_cnt/ERRMSG 
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+function update_board_info_no( &$param_arr )
+{
+    $sql = " UPDATE "
+        ." board_info "
+        ." SET "
+        ." board_title = "
+        ." :board_title "
+        .", board_contents = "
+        ." :board_contents "
+        ." WHERE "
+        ." board_no = "
+        ." :board_no "
+        ;
+    
+    $arr_prepare = 
+            array(
+            ":board_title" => $param_arr["board_title"]
+            ,":board_contents" =>$param_arr["board_contents"]
+            ,":board_no" =>$param_arr["board_no"]
+            );
+
+    $conn = null;
+    try 
+    {
+        db_conn( $conn );       // PDO object 셋
+        $conn->beginTransaction(); // Transaction시작  commit이나 rollback만나면 종료
+        $stmt = $conn->prepare( $sql );
+        $stmt->execute( $arr_prepare );
+        $result_cnt = $stmt->rowCount();
+        $conn->commit();
+    }
+    catch (Exception $e) 
+    {
+        $conn->rollback();
+        return $e->getMessage();
+    }
+    finally
+    {
+        $conn = null;//     데이터베이스 종료
+    }
+    return $result_cnt;     //행의 개수 리턴 
+}
+// $arr = 
+//         array(
+//             "board_no" => 1
+//             ,"board_title" => "test1"
+//             ,"board_contents" => "testtest1"
+//         );
 
 
 

@@ -10,15 +10,15 @@
     $http_method = $_SERVER["REQUEST_METHOD"];
     // get이나 post로 넘어옴 
 
-    if( array_key_exists("page_num",$_GET) )
-    // array_key_exists() : array에 키가 존재하는지 확인하는 함수
-        {
-            $page_num = $_GET["page_num"];
-        }
-    else
-        {
-            $page_num = 1;
-        }
+    // if( array_key_exists("page_num",$_GET) )
+    // // array_key_exists() : array에 키가 존재하는지 확인하는 함수
+    //     {
+    //         $page_num = $_GET["page_num"];
+    //     }
+    // else
+    //     {
+    //         $page_num = 1;
+    //     }
 
     // GET 체크
     // 셋팅값이 보이면 get방식 안보이면 post 방식
@@ -48,7 +48,11 @@
         $result_cnt = update_board_info_no( $arr_info );
 
         // select
-        $result_info = select_board_info_no( $arr_post["board_no"] );
+        // $result_info = select_board_info_no( $arr_post["board_no"] );    0412 delete
+
+        header( "Location: board_detail.php?board_no=".$arr_post["board_no"] );
+        exit(); //exit 실행하면 그 밑에 있는 코드는 실행이 안됨. 53행(header())에서 redirect 했기 때문에 이후의 소스코드는 실행할 필요가 없다. 
+                // list -> detail -> update-> detail 
     }
 
 ?>
@@ -60,11 +64,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Modify</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/board_update.css" type="text/css" >
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/board_update.css">
+
+
 </head>
 <body>
     <header>
@@ -80,11 +86,17 @@
         <input type="text" id = "title" name="board_title" value = "<?php echo $result_info['board_title'] ?>" >
         
         <label for="contents">게시글 내용</label>
-        <textarea id="contents" name="board_contents" value = "<?php echo $result_info['board_contents'] ?>" ></textarea>
-        
+        <textarea id="contents" name="board_contents" placeholder="<?php echo $result_info['board_contents'] ?>" value = "<?php echo $result_info['board_contents'] ?>" ></textarea>
+        <!-- <button><a href="board_list.php?page_num=<?php //echo $page_num ?>">리스트</a></button> -->
         <button type="submit">수정</button>
-        <button><a href="board_list.php?page_num=<?php echo $page_num ?>">리스트</a></button>
+        <button><a href="board_detail.php?board_no=<?php echo $result_info["board_no"] ?>">
+            취소
+            </a>
+        </button>
+        
     </form>
+    <button><a href="board_list.php">리스트</a></button>
     </main>
+
 </body>
 </html>

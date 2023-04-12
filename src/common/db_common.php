@@ -10,7 +10,7 @@ function db_conn( &$param_conn )
 {
     $host = "localhost"; // 원래는 아이피가 들어감
     $user = "root";      // user
-    $password = "0809";   //password
+    $password = "root506";   //password
     $name = "board";     // DB name
     $charset = "utf8mb4";    //charset
     $dns = "mysql:host=".$host.";dbname=".$name.";charset=".$charset;
@@ -141,6 +141,7 @@ function select_board_info_no( &$param_no )
             ." board_no "
             ." ,board_title "
             ." ,board_contents "
+            ." ,board_write_date "          //0412 작성일 추가
             ." FROM "
             ." board_info "
             ." WHERE "
@@ -221,13 +222,54 @@ function update_board_info_no( &$param_arr )
     }
     return $result_cnt;     //행의 개수 리턴 
 }
-// $arr = 
-//         array(
-//             "board_no" => 1
-//             ,"board_title" => "test1"
-//             ,"board_contents" => "testtest1"
-//         );
 
+
+//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+// 함수명   : delte_board_info_no
+// 기능     : 게시판 특정 게시글 정보 삭제플러그 갱신
+// 파라미터 : INT &$param_no
+// 리턴값   : INT/STRING    $result_cnt/ERRMSG
+// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+function delete_board_info_no( &$param_no )
+{
+    $sql = " UPDATE "
+            ." board_info "
+            ." SET "
+            ." board_del_flg = "
+            ." '1' "
+            ." ,board_del_date = "
+            ." NOW() "
+            ." WHERE "
+            ." board_no = "
+            ." :board_no "
+            ;
+
+    $arr_prepare = 
+                array(
+                    ":board_no"=> $param_no
+                );
+    
+    $conn = null;
+    try 
+    {
+        db_conn( $conn );       // PDO object 셋
+        $conn->beginTransaction(); // Transaction시작  commit이나 rollback만나면 종료
+        $stmt = $conn->prepare( $sql );
+        $stmt->execute( $arr_prepare );
+        $result_cnt = $stmt->rowCount();
+        $conn->commit();
+    }
+    catch (Exception $e) 
+    {
+        $conn->rollback();
+        return $e->getMessage();
+    }
+    finally
+    {
+        $conn = null;//     데이터베이스 종료
+    }
+    return $result_cnt; 
+}
 
 
 ?>

@@ -46,19 +46,19 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./css/board_list.css" type="text/css" >
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap" rel="stylesheet">        
         <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/board_list.css ">
+        <link rel="stylesheet" href="./css/star.css">
         <title>게시판</title>
     </head>
     <body>
         <header>
             <h1>BOARD</h1>
-            <div class="tree_img"></div>
         </header>
         <main>
             <table>
@@ -76,7 +76,7 @@
                             ?>
                             <tr>
                                 <td><?php echo $recode["board_no"] ?></td>
-                                <td ><a class="table_list" href="board_update.php?board_no=<?php echo $recode["board_no"] ?>&&page_num=<?php echo $page_num ?>"><?php echo $recode["board_title"] ?></a></td>
+                                <td ><a class="table_list" href="board_detail.php?board_no=<?php echo $recode["board_no"] ?>"><?php echo $recode["board_title"] ?></a></td>
                                 <td><?php echo $recode["board_write_date"] ?></td>
                             </tr>    
                             <?php
@@ -86,10 +86,11 @@
             </table>
         </main>
         <footer>
-            <?php 
-                    if($page_num > 11)
+            <!-- 5페이지씩 -->
+                <?php 
+                    if($page_num > 6)
                     {
-                    $ten_prev_page = $page_num - 10;
+                    $ten_prev_page = $page_num - 5;
                     }else
                     {
                         $ten_prev_page = 1;
@@ -99,27 +100,30 @@
                 <?php
                     }
                 ?>
-
-                <?php  
-
+                <!-- 이전페이지 -->
+                <?php
                     if($page_num > 1)
                     {
-                    $prev_page = $page_num - 1;
+                        $prev_page = $page_num -1;
                     // }
                     // else
                     // {
                     // $prev_page = 1;
-                    
+                    }else if($page_num === 1)
+                    {
+                    $prev_page = 1;
                     ?>
 
-                <div class="page_list" ><a href='board_list.php?page_num=<?php echo $prev_page ?>'> < </a></div>
+                <div class="page_list" ><a href='board_list.php?page_num=<?php echo $prev_page; ?>'><</a></div>
                     
                 <?php
                     }
                 ?>
-
+            <!-- 페이지개수 5개씩 -->
                 <?php
-                    for( $i= 1; $i <= $max_page_number ; $i++ )
+                $start_page = max(1, $page_num - 4); // 시작 페이지 번호
+                $end_page = min($max_page_number, $page_num + 4); // 끝 페이지 번호
+                    for ($i = $start_page; $i <= $end_page; $i++) 
                     {
                 ?>
                     <div class="page_list"><a href='board_list.php?page_num=<?php echo $i?>'><?php echo $i ?></a></div>
@@ -131,25 +135,32 @@
                             // post 방식 : 숨겨서 이동 
                             // string
                 ?>
+
+                <!-- 다음페이지 -->
                 <?php 
 
                     if($page_num < $max_page_number)
                     {
                         $next_page = $page_num + 1;
-                ?>  
+                    }
+                    else if($page_num = $max_page_number)
+                    {
+                        $next_page = $max_page_number;
+                        
+                    ?>  
 
-                    <div class="page_list " ><a href='board_list.php?page_num=<?php echo $next_page ?>'> > </a></div>
-                            
+                <div class="page_list " ><a href='board_list.php?page_num=<?php echo $next_page; ?>'> > </a></div>
+
                 <?php
                     }
                 ?>
-
+                <!-- 5페이지 이동 -->
                 <?php 
                 
-                    $max_ten_min_page_number = $max_page_number - 10 ; 
+                    $max_ten_min_page_number = $max_page_number - 5 ; 
                     if($page_num < $max_ten_min_page_number)
                     {
-                        $ten_next_page = $page_num + 10;
+                        $ten_next_page = $page_num + 5;
                             
                     }else
                     {

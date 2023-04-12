@@ -1,0 +1,11 @@
+body {
+    animation: slide 60s linear infinite alternate;
+    background-image: url("https://i.pinimg.com/736x/ef/d7/d9/efd7d98d4ea49ea3c7d7fbf37e74bef5--dark-phone-wallpapers-phones.jpg");
+    background-repeat: repeat;
+  }
+  
+  @keyframes slide {
+    to {
+      background-position: 0 50%;
+    }
+  }

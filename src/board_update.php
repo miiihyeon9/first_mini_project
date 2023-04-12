@@ -69,16 +69,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/board_update.css">
-
-
+    <link rel="stylesheet" href="./css/star.css">
 </head>
 <body>
     <header>
-        <h1>BOARD</h1>
-        <div class="tree_img"></div>
+        <h1>MODIFY</h1>
     </header>
     <main>
     <form method="post" action="board_update.php">
+        <button class="list_button"><a href="board_list.php">리스트</a></button>
         <label for="bno">게시글 번호</label>
         <input type="text" id="bno" name="board_no" value = "<?php echo $result_info['board_no'] ?>" readonly >
         
@@ -86,7 +85,7 @@
         <input type="text" id = "title" name="board_title" value = "<?php echo $result_info['board_title'] ?>" >
         
         <label for="contents">게시글 내용</label>
-        <textarea id="contents" name="board_contents" placeholder="<?php echo $result_info['board_contents'] ?>" value = "<?php echo $result_info['board_contents'] ?>" ></textarea>
+        <textarea id="contents" name="board_contents" value = "<?php echo $result_info['board_contents'] ?>" ></textarea>
         <!-- <button><a href="board_list.php?page_num=<?php //echo $page_num ?>">리스트</a></button> -->
         <button type="submit">수정</button>
         <button><a href="board_detail.php?board_no=<?php echo $result_info["board_no"] ?>">
@@ -95,7 +94,6 @@
         </button>
         
     </form>
-    <button><a href="board_list.php">리스트</a></button>
     </main>
 
 </body>

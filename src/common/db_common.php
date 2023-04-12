@@ -10,7 +10,7 @@ function db_conn( &$param_conn )
 {
     $host = "localhost"; // 원래는 아이피가 들어감
     $user = "root";      // user
-    $password = "root506";   //password
+    $password = "0809";   //password
     $name = "board";     // DB name
     $charset = "utf8mb4";    //charset
     $dns = "mysql:host=".$host.";dbname=".$name.";charset=".$charset;

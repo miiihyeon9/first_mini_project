@@ -4,6 +4,7 @@
     define("URL_HEADER", SRC_ROOT."board_header.php");
     include_once(URL_DB);
     //Request Parameter 획득 (GET)
+    // $http_method = $_SERVER["REQUEST_MENTHOD"];?????왜안하지???
     $arr_get = $_GET;
 
     //DB에서 게시글 정보 획득
@@ -26,13 +27,13 @@
     <title>Detail</title>
 </head>
 <body>
-    <div id="layers">
+    <!-- <div id="layers">
         <div class="layer"></div>
         <div class="layer"></div>
         <div class="layer"></div>
         <div class="layer"></div>
         <div class="layer"></div>
-    </div>
+    </div> -->
     <header>
         <?php include_once(URL_HEADER) ?>
         <h2 class="title">Details</h2>

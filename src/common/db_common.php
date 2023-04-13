@@ -131,7 +131,7 @@ function select_board_info_count()
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 // 함수     : select_board_info_no()
 // 기능     : 게시판 특정 게시글 정보 검색 
-// 파라미터 : INT &%param_no
+// 파라미터 : INT &$param_no
 // 리턴값   : ARRAY $result
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 
@@ -306,8 +306,8 @@ function insert_board_info( &$param_array )
         db_conn( $conn );       // PDO object 셋
         $conn->beginTransaction(); // Transaction시작  commit이나 rollback만나면 종료
         $stmt = $conn->prepare( $sql );
-        $result_cnt = $stmt->execute( $arr_prepare );
-        // $result_cnt = $stmt->rowCount();
+        $stmt->execute( $arr_prepare );
+        $result_cnt = $stmt->rowCount();
         $conn->commit();
     }
     catch (Exception $e) 

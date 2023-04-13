@@ -34,13 +34,13 @@
     <link rel="stylesheet" href="./css/board_insert.css">
 </head>
 <body>
-    <div id="layers">
+    <!-- <div id="layers">
         <div class="layer"></div>
         <div class="layer"></div>
         <div class="layer"></div>
         <div class="layer"></div>
         <div class="layer"></div>
-    </div>
+    </div> -->
     <header>
         <?php include_once(URL_HEADER) ?>
             <h2>Write</h2>

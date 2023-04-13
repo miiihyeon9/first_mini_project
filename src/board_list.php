@@ -91,16 +91,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/board_list.css">
         <link rel="stylesheet" href="./css/star.css">
-        <title>게시판</title>
+        <title>Board</title>
     </head>
     <body>
-        <div id="layers">
+        <!-- <div id="layers">
             <div class="layer"></div>
             <div class="layer"></div>
             <div class="layer"></div>
             <div class="layer"></div>
             <div class="layer"></div>
-        </div>
+        </div> -->
         <header>
             <?php include_once(URL_HEADER) ?>
             <h2>List</h2>

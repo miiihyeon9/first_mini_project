@@ -73,13 +73,13 @@
     <link rel="stylesheet" href="./css/star.css">
 </head>
 <body>
-    <div id="layers">
+    <!-- <div id="layers">
         <div class="layer"></div>
         <div class="layer"></div>
         <div class="layer"></div>
         <div class="layer"></div>
         <div class="layer"></div>
-    </div>
+    </div> -->
     <header>
         <?php include_once(URL_HEADER) ?>
         <h2>MODIFY</h2>

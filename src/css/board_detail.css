@@ -1,28 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
-*{
-    text-align: center;
-    color : rgba(255,215,0,0.7);
+
+*
+{
+   text-align: center;
+   margin :0;
 }
 
-h1{
+a
+{
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 900;
+    position :relative;
+}
+
+/* .title{
+    margin-top: 50px;
+    margin-bottom: 0;
     font-family: 'DynaPuff', cursive;
-    margin-top: 100px;
     font-size: 100px;
     font-weight: 900;
-    color:#000;
-    text-shadow: -3px 0px rgba(255,215,0,0.7), 0px 3px rgba(255,215,0,0.7), 3px 0px rgba(255,215,0,0.7), 0px -3px rgba(255,215,0,0.7);
+    text-shadow: -3px 0px rgba(255, 192, 203,0.5), 0px 3px rgba(255, 192, 203,0.5), 3px 0px rgba(255, 192, 203,0.5), 0px -3px rgba(255, 192, 203,0.5);
+    color: #000;
+} */
+h1
+{
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+h1 a
+{
+    font-family: 'DynaPuff', cursive;
+    font-size: 100px;
+    font-weight: 900;
+    text-shadow: -3px 0px rgb(255, 192, 203), 0px 3px rgb(255, 192, 203), 3px 0px rgb(255, 192, 203), 0px -3px rgb(255, 192, 203);
+    color: #000;
+} 
+h2
+{
+    margin-top: 20px;
+    font-family: 'DynaPuff', cursive;
+    font-size: 60px;
+    font-weight: 900;
+    text-shadow: -3px 0px rgb(255, 192, 203), 0px 3px rgb(255, 192, 203), 3px 0px rgb(255, 192, 203), 0px -3px rgb(255, 192, 203);
+    position :absolute;
+    bottom : -70px;
+    left : 600px;
+    
+}
+
+
+
+
+header
+{
+    position :relative;
 }
 
 main
 {
+    font-family: 'Do Hyeon', sans-serif;
     width : 600px;
     height : 400px;
-    margin : 0 auto;
-    border : 2px solid rgba(255,215,0,0.7);
+    margin : 150px auto;
+    border : 2px solid rgb(255, 192, 203);  
     background-color : rgba(0,0,0,0.5);
     font-size: 1.3em;
+    color : rgb(255,192,203);
+    position : relative;
 }
 
 button
@@ -30,17 +77,62 @@ button
     width : 80px;
     height: 40px;
     margin : 0 auto;
-    border : 3px solid rgba(255,215,0,0.7);
+    border : 3px solid rgb(255, 192, 203);
     background-color : rgba(0,0,0,0.3);
     border-radius: 20px;
-    font-weight: 900;
     font-size: 1.1em;
-    color : rgba(255,215,0,0.7);
+    color : rgb(255, 192, 203);
+    text-decoration: none;
+    font-size : 18px;
+    font-family: 'Do Hyeon', sans-serif;
+
+}
+#list_container{
+    font-size: 1.2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-row-gap: 30px;
 }
 
-a
+main a 
 {
-    font-size:0.9em;
-    font-weight: 900;
-    text-decoration: none;
+    color: rgb(255, 192, 203);
 }
+
+
+.main_button_1 {
+    position : absolute;
+    bottom : 10px;
+    left: 150px;
+}
+
+.main_button_2
+{
+    position : absolute;
+    bottom : 10px;
+    right : 150px;
+}
+
+.board_number{
+    margin-top: 20px;
+}
+
+/* 
+
+
+
+
+
+
+.main_button1:hover
+{
+    color :#ffc0cb;
+}
+
+.main_button2:hover
+{
+    color :#ffc0cb;
+}
+
+ */

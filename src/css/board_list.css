@@ -1,31 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
-
-*{
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+*
+{
     text-align: center;
+    margin :0;
+}
+
+a
+{
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 900;
+    position :relative;
 }
 
 h1{
+    margin-top: 50px;
+    margin-bottom: 0;
     font-family: 'DynaPuff', cursive;
-    margin-top: 100px;
     font-size: 100px;
     font-weight: 900;
-    color:#000;
-    text-shadow: -3px 0px rgba(255,215,0,0.7), 0px 3px rgba(255,215,0,0.7), 3px 0px rgba(255,215,0,0.7), 0px -3px rgba(255,215,0,0.7);
+    text-shadow: -3px 0px rgb(255, 192, 203), 0px 3px rgb(255, 192, 203), 3px 0px rgb(255, 192, 203), 0px -3px rgb(255, 192, 203);
+    color: #000;
+}
+header
+{
+    position :relative;
+}
+h2
+{
+    /* margin-top: 0px; */
+    font-family: 'DynaPuff', cursive;
+    font-size: 60px;
+    font-weight: 900;
+    text-shadow: -3px 0px rgb(255, 192, 203), 0px 3px rgb(255, 192, 203) , 3px 0px rgb(255, 192, 203), 0px -3px rgb(255, 192, 203);
+    position :absolute;
+    bottom : -70px;
+    left : 550px;
 }
 
 th,td{
     font-size: 1.2em;
-    border : 2px solid rgba(255, 215, 0,0.2);
+    border : 2px solid rgb(255, 192, 203);
     padding : 15px;
-    color : rgba(255,215,0,0.7);
+    color : rgb(255, 192, 203);
 }
 
 th
 {
     background-color: rgba(0, 0, 0,0.7);
-    color: #ffd700;
-
+    color: #ffc0cb;
+    
 }
 
 tbody
@@ -38,11 +63,30 @@ table
     border-collapse: collapse;
     width:600px;
     margin : 0 auto ;
+    margin-top : 100px;
     position: relative;
-    z-index: 2;
-
+    
+}
+main
+{
+position : relative;
+width:600px;
+margin : 0 auto;
 }
 
+.write
+{
+position : absolute;
+top : -50px;
+right : 550px;
+border:rgb(255, 192, 203);
+background-color: rgba(0, 0, 0,0.5);
+}
+
+.title
+{
+    color : #000;
+}
 .page_list
 {
     display: inline-block;
@@ -55,31 +99,39 @@ table
     
 }
 
-a{
-    font-size: 1.2em;
-    font-weight: 900;
-    color : rgba(255,215,0,0.7);
-    text-decoration: none;
-    font-family: 'Noto Sans KR', sans-serif;
-    position :relative;
-    z-index: 2;
+.list
+{
+    color : rgb(255, 192, 203);
 }
-
 .table_list
 {
     font-size: 1.2em;
     font-weight: 400;
+    color :rgb(255, 192, 203) ;
 }
 
-a:hover
+.write_link
 {
-    color :#ffd700;
+    color : rgb(255, 192, 203);
+
+}
+.write
+{
+    border : 2px solid rgb(255, 192, 203);
+    border-radius: 5px;
+    position : absolute;
+    right:0;
 }
 
-.page_list:hover a{
-    color :#ffd700;
+
+
+.page_list:hover list{
+    color :#ffc0cb;
 }
 
 .page_list:hover{
     background-color: #000;
-}
+} 
+.write:hover{
+    background-color: #000;
+} 

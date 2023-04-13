@@ -10,7 +10,7 @@ function db_conn( &$param_conn )
 {
     $host = "localhost"; // 원래는 아이피가 들어감
     $user = "root";      // user
-    $password = "0809";   //password
+    $password = "root506";   //password
     $name = "board";     // DB name
     $charset = "utf8mb4";    //charset
     $dns = "mysql:host=".$host.";dbname=".$name.";charset=".$charset;
@@ -270,6 +270,61 @@ function delete_board_info_no( &$param_no )
     }
     return $result_cnt; 
 }
+
+// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+// 함수명 : insert_board_info
+// 기능 : 새로운 게시글 생성
+// 파라미터 : STRING &$param_title, &$param_contents
+// 리턴값 : INT $result_cnt / STRING ERRMSG
+// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+function insert_board_info( &$param_array )
+{
+    $sql = " INSERT INTO "
+            ." board_info "
+            ." ( "
+            ." board_title "
+            ." ,board_contents "
+            ." ,board_write_date "
+            ." ) "
+            ." VALUES "
+            ." ( "
+            ." :board_title "
+            ." ,:board_contents "
+            ." ,NOW() "
+            ." ) "
+            ." ; ";
+
+    $arr_prepare = 
+                array(
+                    ":board_title" => $param_array["board_title"]
+                    ,":board_contents" => $param_array["board_contents"]
+                );
+
+    $conn = null;
+    try 
+    {
+        db_conn( $conn );       // PDO object 셋
+        $conn->beginTransaction(); // Transaction시작  commit이나 rollback만나면 종료
+        $stmt = $conn->prepare( $sql );
+        $result_cnt = $stmt->execute( $arr_prepare );
+        // $result_cnt = $stmt->rowCount();
+        $conn->commit();
+    }
+    catch (Exception $e) 
+    {
+        $conn->rollback();
+        return $e->getMessage();
+    }
+    finally
+    {
+        $conn = null;//     데이터베이스 종료
+    }
+
+    return $result_cnt; 
+}
+
+
+
 
 
 ?>

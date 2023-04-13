@@ -1,6 +1,7 @@
 <?php
-    define("DOC_ROOT", $_SERVER["DOCUMENT_ROOT"]."/");
-    define("URL_DB", DOC_ROOT."src/common/db_common.php");
+    define("SRC_ROOT", $_SERVER["DOCUMENT_ROOT"]."/src/");
+    define("URL_DB", SRC_ROOT."common/db_common.php");
+    define("URL_HEADER", SRC_ROOT."board_header.php");
     include_once(URL_DB);
     $http_method = $_SERVER["REQUEST_METHOD"];
     // 세션에 있는 request_method
@@ -27,17 +28,53 @@
     $max_page_number = ceil((int)$result_cnt[0]["cnt"]/$limit_num);
     // echo $max_page_number;
     
-
-
-    
     $arr_prepare = 
-                array
-                (
-                    "limit_num" => $limit_num
-                    ,"offset" => $offset
-                );
+    array
+    (
+        "limit_num" => $limit_num
+        ,"offset" => $offset
+    );
     $result_paging = select_board_info_paging($arr_prepare);
     
+    // 페이지 5칸씩 뒤로 이동 
+        if($page_num > 6)
+        {
+        $five_prev_page = $page_num - 5;
+        }else
+        {
+            $five_prev_page = 1;
+        }
+
+    // 페이지 한칸씩 전으로 이동 
+        if($page_num > 1)
+        {
+            $prev_page = $page_num -1;
+        }
+        else
+        {
+            $prev_page = 1;
+        }
+
+    // 다음페이지 이동
+        if($page_num < $max_page_number)
+        {
+            $next_page = $page_num + 1;
+        }
+        else
+        {
+            $next_page = $max_page_number;
+        }
+
+    // 페이지 5칸씩 앞으로 이동
+        $max_five_min_page_number = $max_page_number - 5 ; 
+        if($page_num < $max_five_min_page_number)
+        {
+            $ten_next_page = $page_num + 5;
+                
+        }else
+        {
+            $ten_next_page = $max_page_number;
+        }
     ?>
 
 <!DOCTYPE html>
@@ -52,15 +89,24 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="./css/board_list.css ">
+        <link rel="stylesheet" href="./css/board_list.css">
         <link rel="stylesheet" href="./css/star.css">
         <title>게시판</title>
     </head>
     <body>
+        <div id="layers">
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+            <div class="layer"></div>
+        </div>
         <header>
-            <h1>BOARD</h1>
+            <?php include_once(URL_HEADER) ?>
+            <h2>List</h2>
         </header>
         <main>
+            <button class="write" type="button"><a class="write_link" href="board_insert.php">글 쓰기</a></button>
             <table>
                 <thead>
                     <tr>
@@ -73,11 +119,13 @@
                     <?php
                         foreach( $result_paging as $recode)
                         {
+                            $date_sub = mb_substr($recode["board_write_date"],0,10);        // 작성일 시간 지우기
                             ?>
                             <tr>
                                 <td><?php echo $recode["board_no"] ?></td>
                                 <td ><a class="table_list" href="board_detail.php?board_no=<?php echo $recode["board_no"] ?>"><?php echo $recode["board_title"] ?></a></td>
-                                <td><?php echo $recode["board_write_date"] ?></td>
+                                <td><?php 
+                                    echo $date_sub ?></td>
                             </tr>    
                             <?php
                         }
@@ -86,47 +134,17 @@
             </table>
         </main>
         <footer>
-            <!-- 5페이지씩 -->
-                <?php 
-                    if($page_num > 6)
-                    {
-                    $ten_prev_page = $page_num - 5;
-                    }else
-                    {
-                        $ten_prev_page = 1;
-                ?>
+            <!-- 버튼 -->
+                <div class="page_list" ><a class="list" href='board_list.php?page_num=<?php echo $five_prev_page ?>'> << </a></div>
 
-                <div class="page_list" ><a href='board_list.php?page_num=<?php echo $ten_prev_page ?>'> << </a></div>
-                <?php
-                    }
-                ?>
-                <!-- 이전페이지 -->
-                <?php
-                    if($page_num > 1)
-                    {
-                        $prev_page = $page_num -1;
-                    // }
-                    // else
-                    // {
-                    // $prev_page = 1;
-                    }else if($page_num === 1)
-                    {
-                    $prev_page = 1;
-                    ?>
-
-                <div class="page_list" ><a href='board_list.php?page_num=<?php echo $prev_page; ?>'><</a></div>
-                    
-                <?php
-                    }
-                ?>
-            <!-- 페이지개수 5개씩 -->
+                    <div class="page_list" ><a  class="list" href='board_list.php?page_num=<?php echo $prev_page ?>'><</a></div>
                 <?php
                 $start_page = max(1, $page_num - 4); // 시작 페이지 번호
-                $end_page = min($max_page_number, $page_num + 4); // 끝 페이지 번호
+                $end_page = $start_page + 4 ; // 끝 페이지 번호
                     for ($i = $start_page; $i <= $end_page; $i++) 
                     {
-                ?>
-                    <div class="page_list"><a href='board_list.php?page_num=<?php echo $i?>'><?php echo $i ?></a></div>
+                // ?>
+                    <div class="page_list"><a class="list" href='board_list.php?page_num=<?php echo $i?>'><?php echo $i ?></a></div>
 
                 <?php
                                 
@@ -135,42 +153,8 @@
                             // post 방식 : 숨겨서 이동 
                             // string
                 ?>
-
-                <!-- 다음페이지 -->
-                <?php 
-
-                    if($page_num < $max_page_number)
-                    {
-                        $next_page = $page_num + 1;
-                    }
-                    else if($page_num = $max_page_number)
-                    {
-                        $next_page = $max_page_number;
-                        
-                    ?>  
-
-                <div class="page_list " ><a href='board_list.php?page_num=<?php echo $next_page; ?>'> > </a></div>
-
-                <?php
-                    }
-                ?>
-                <!-- 5페이지 이동 -->
-                <?php 
-                
-                    $max_ten_min_page_number = $max_page_number - 5 ; 
-                    if($page_num < $max_ten_min_page_number)
-                    {
-                        $ten_next_page = $page_num + 5;
-                            
-                    }else
-                    {
-                        $ten_next_page = $max_page_number;
-                ?>
-                
-                    <div class="page_list" ><a href='board_list.php?page_num=<?php echo $ten_next_page ?>'> >> </a></div>
-                <?php
-                    }
-                ?> 
+                    <div class="page_list " ><a class="list" href='board_list.php?page_num=<?php echo $next_page; ?>'> > </a></div>
+                    <div class="page_list" ><a class="list" href='board_list.php?page_num=<?php echo $ten_next_page ?>'> >> </a></div>
             </div>
     </footer>
 </body>

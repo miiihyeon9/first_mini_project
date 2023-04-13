@@ -1,0 +1,144 @@
+<mxfile host="app.diagrams.net" modified="2023-04-13T07:11:31.080Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="TJ5pvucA4puL47YhsKgs" version="21.1.7" type="github">
+  <diagram name="페이지-1" id="K38AMDydlP9vqRFa5Xmd">
+    <mxGraphModel dx="1434" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-3" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;시작&lt;/font&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="64" y="11" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-5" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;DB에서 게시글 정보 획득&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="11.5" y="141" width="235" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-6" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="qMTFilJbAdwKX9CUsrXF-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="128.5" y="79" as="sourcePoint" />
+            <mxPoint x="129" y="139" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-8" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="128.5" y="171" as="sourcePoint" />
+            <mxPoint x="128.5" y="251" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="128.5" y="171" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-9" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;화면 출력&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="49" y="251" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-10" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;종료&lt;/font&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="64" y="351" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-11" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.423;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="129" y="282" as="sourcePoint" />
+            <mxPoint x="128.99" y="352" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="129" y="352" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-12" value="1층 도착" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="490" y="284" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-13" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;집에서 &lt;font style=&quot;font-size: 20px;&quot;&gt;나옴&lt;/font&gt;&lt;/font&gt;" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="470" y="70" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-14" value="엘리베이터 탑승 대기" style="rhombus;whiteSpace=wrap;html=1;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="415" y="150" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-15" value="" style="endArrow=classic;html=1;rounded=0;fontSize=20;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="555" y="111" as="sourcePoint" />
+            <mxPoint x="555" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-17" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontSize=20;" edge="1" parent="1" source="qMTFilJbAdwKX9CUsrXF-14">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="555" y="223" as="sourcePoint" />
+            <mxPoint x="555" y="283" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-18" value="엘리베이터 도착" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;fontSize=16;" connectable="0" vertex="1" parent="qMTFilJbAdwKX9CUsrXF-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-19" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="695" y="189.5" as="sourcePoint" />
+            <mxPoint x="570" y="130" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="680" y="120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-20" value="엘리베이터 아직 안도착&lt;br style=&quot;font-size: 16px;&quot;&gt;" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;fontSize=16;" connectable="0" vertex="1" parent="qMTFilJbAdwKX9CUsrXF-19">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="25" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-21" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="554.5" y="324" as="sourcePoint" />
+            <mxPoint x="555" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-22" value="학원도착" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="495" y="362" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-23" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;용무 유무&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="520" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-24" value="" style="endArrow=classic;html=1;rounded=0;fontSize=20;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="557" y="402" as="sourcePoint" />
+            <mxPoint x="557" y="436" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-25" value="행정실 도착" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="500" y="440" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-26" value="" style="endArrow=classic;html=1;rounded=0;fontSize=20;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="559.5" y="480" as="sourcePoint" />
+            <mxPoint x="559.5" y="514" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-27" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="664" y="546" as="sourcePoint" />
+            <mxPoint x="624" y="466" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="724" y="496" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-28" value="용무 있음" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="qMTFilJbAdwKX9CUsrXF-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-30" value="506호로&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;absoluteArcSize=1;arcSize=14;strokeWidth=2;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="510" y="610" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-31" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="559.5" y="640" as="sourcePoint" />
+            <mxPoint x="560" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-32" value="종료" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.terminator;whiteSpace=wrap;fontSize=20;" vertex="1" parent="1">
+          <mxGeometry x="480" y="680" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-33" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="559.5" y="577" as="sourcePoint" />
+            <mxPoint x="560" y="612" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qMTFilJbAdwKX9CUsrXF-34" value="용무 없음" style="edgeLabel;resizable=0;html=1;align=center;verticalAlign=middle;" connectable="0" vertex="1" parent="qMTFilJbAdwKX9CUsrXF-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

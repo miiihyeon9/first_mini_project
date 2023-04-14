@@ -1,9 +1,11 @@
 <?php
     define("SRC_ROOT", $_SERVER["DOCUMENT_ROOT"]."/src/");
+    // $_SERVER["DOCUMENT_ROOT"] - 서버의 기본 경로 
     define("URL_DB", SRC_ROOT."common/db_common.php");
     define("URL_HEADER", SRC_ROOT."board_header.php");
     include_once(URL_DB);
-    $http_method = $_SERVER["REQUEST_METHOD"];
+
+    // $http_method = $_SERVER["REQUEST_METHOD"];
     // 세션에 있는 request_method
 
     if( array_key_exists("page_num",$_GET) )
@@ -65,17 +67,17 @@
             $next_page = $max_page_number;
         }
 
-    // 페이지 5칸씩 앞으로 이동
-        $max_five_min_page_number = $max_page_number - 5 ; 
-        if($page_num < $max_five_min_page_number)
-        {
-            $ten_next_page = $page_num + 5;
-                
-        }else
-        {
-            $ten_next_page = $max_page_number;
-        }
-    ?>
+         // 페이지 5칸씩 뒤로 이동
+            $max_five_min_page_number = $max_page_number - 5 ; 
+            if($page_num < $max_five_min_page_number)
+            {
+                $ten_next_page = $page_num + 5;
+                    
+            }else
+            {
+                $ten_next_page = $max_page_number;
+            }
+            ?>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -90,72 +92,69 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/board_list.css">
-        <link rel="stylesheet" href="./css/star.css">
+        <link rel="stylesheet" href="./css/common.css">
         <title>Board</title>
     </head>
     <body>
-        <!-- <div id="layers">
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-            <div class="layer"></div>
-        </div> -->
         <header>
             <?php include_once(URL_HEADER) ?>
             <h2>List</h2>
         </header>
         <main>
             <button class="write" type="button"><a class="write_link" href="board_insert.php">글 쓰기</a></button>
-            <table>
-                <thead>
-                    <tr>
-                        <th>게시글 번호</th>
-                        <th>게시글 제목</th>
-                        <th>작성일자</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        foreach( $result_paging as $recode)
-                        {
-                            $date_sub = mb_substr($recode["board_write_date"],0,10);        // 작성일 시간 지우기
+            <div class="table_border">   
+                <table>
+                    <thead>
+                        <tr class="table_col">
+                            <th>게시글 번호</th>
+                            <th>게시글 제목</th>
+                            <th>작성일자</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            foreach( $result_paging as $recode)
+                            {
+                                $date_sub = mb_substr($recode["board_write_date"],0,10);        // 작성일 시간 지우기
+                                ?>
+                                <tr class="board_list_row" >
+                                    <td><?php echo $recode["board_no"] ?></td>
+                                    <td ><a class="table_list" href="board_detail.php?board_no=<?php echo $recode["board_no"] ?>"><?php echo $recode["board_title"] ?></a></td>
+                                    <td><?php 
+                                        echo $date_sub ?></td>
+                                </tr>    
+                                <?php
+                            }
                             ?>
-                            <tr>
-                                <td><?php echo $recode["board_no"] ?></td>
-                                <td ><a class="table_list" href="board_detail.php?board_no=<?php echo $recode["board_no"] ?>"><?php echo $recode["board_title"] ?></a></td>
-                                <td><?php 
-                                    echo $date_sub ?></td>
-                            </tr>    
-                            <?php
-                        }
-                    ?>
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div> 
         </main>
         <footer>
             <!-- 버튼 -->
-                <div class="page_list" ><a class="list" href='board_list.php?page_num=<?php echo $five_prev_page ?>'> << </a></div>
-
-                    <div class="page_list" ><a  class="list" href='board_list.php?page_num=<?php echo $prev_page ?>'><</a></div>
-                <?php
+            <div class="page_list" ><a class="list" href='board_list.php?page_num=<?php echo $five_prev_page ?>'> << </a></div>
+            
+            <div class="page_list" ><a  class="list" href='board_list.php?page_num=<?php echo $prev_page ?>'><</a></div>
+            <?php
+                // 버튼 5개 제한 
                 $start_page = max(1, $page_num - 4); // 시작 페이지 번호
                 $end_page = $start_page + 4 ; // 끝 페이지 번호
-                    for ($i = $start_page; $i <= $end_page; $i++) 
-                    {
-                // ?>
+                for ($i = $start_page; $i <= $end_page; $i++) 
+                {
+                    // ?>
                     <div class="page_list"><a class="list" href='board_list.php?page_num=<?php echo $i?>'><?php echo $i ?></a></div>
-
-                <?php
+                    
+                    <?php
                                 
-                }
+                            }
                             // get 방식 : url뒤에 이동할 페이지를 
                             // post 방식 : 숨겨서 이동 
                             // string
-                ?>
+                            ?>
                     <div class="page_list " ><a class="list" href='board_list.php?page_num=<?php echo $next_page; ?>'> > </a></div>
                     <div class="page_list" ><a class="list" href='board_list.php?page_num=<?php echo $ten_next_page ?>'> >> </a></div>
-            </div>
-    </footer>
-</body>
-</html>
+                </div>
+            </footer>
+        </body>
+        </html>
+        

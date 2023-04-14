@@ -3,6 +3,7 @@
     define("URL_DB", SRC_ROOT."common/db_common.php");
     define("URL_HEADER", SRC_ROOT."board_header.php");
     include_once(URL_DB);
+    
     $http_method = $_SERVER["REQUEST_METHOD"];
 
 
@@ -30,7 +31,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/star.css">
+    <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/board_insert.css">
 </head>
 <body>
@@ -52,7 +53,7 @@
             <input type="text" id = "title" name="board_title">
             
             <label for="contents">게시글 내용</label>
-            <textarea id="contents" name="board_contents"></textarea>
+            <textarea class="contents_write" id="contents" name="board_contents" ></textarea>
             
             <button type="submit">작성</button>
             <button><a href="board_list.php">취소</a></button>

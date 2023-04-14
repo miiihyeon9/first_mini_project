@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
-
-*
-{
-   text-align: center;
-   margin :0;
-}
-
 a
 {
     text-decoration: none;
@@ -15,43 +8,6 @@ a
     font-weight: 900;
     position :relative;
 }
-
-/* .title{
-    margin-top: 50px;
-    margin-bottom: 0;
-    font-family: 'DynaPuff', cursive;
-    font-size: 100px;
-    font-weight: 900;
-    text-shadow: -3px 0px rgba(255, 192, 203,0.5), 0px 3px rgba(255, 192, 203,0.5), 3px 0px rgba(255, 192, 203,0.5), 0px -3px rgba(255, 192, 203,0.5);
-    color: #000;
-} */
-h1
-{
-    margin-top: 50px;
-    margin-bottom: 0;
-}
-h1 a
-{
-    font-family: 'DynaPuff', cursive;
-    font-size: 100px;
-    font-weight: 900;
-    text-shadow: -3px 0px rgb(255, 192, 203), 0px 3px rgb(255, 192, 203), 3px 0px rgb(255, 192, 203), 0px -3px rgb(255, 192, 203);
-    color: #000;
-} 
-h2
-{
-    margin-top: 20px;
-    font-family: 'DynaPuff', cursive;
-    font-size: 60px;
-    font-weight: 900;
-    text-shadow: -3px 0px rgb(255, 192, 203), 0px 3px rgb(255, 192, 203), 3px 0px rgb(255, 192, 203), 0px -3px rgb(255, 192, 203);
-    position :absolute;
-    bottom : -70px;
-    left : 600px;
-    
-}
-
-
 
 
 header
@@ -64,8 +20,10 @@ main
     font-family: 'Do Hyeon', sans-serif;
     width : 600px;
     height : 400px;
-    margin : 150px auto;
+    box-sizing: border-box;
+    margin : 50px auto;
     border : 2px solid rgb(255, 192, 203);  
+    border-radius: 20px;
     background-color : rgba(0,0,0,0.5);
     font-size: 1.3em;
     color : rgb(255,192,203);
@@ -87,12 +45,20 @@ button
     font-family: 'Do Hyeon', sans-serif;
 
 }
+
 #list_container{
     font-size: 1.2em;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-row-gap: 30px;
+    grid-row-gap: 20px;
+}
+
+div
+{
+    height: 50px;
+    /* width : 250px;
+    margin : 0 auto; */
 }
 
 main a 
@@ -118,21 +84,41 @@ main a
     margin-top: 20px;
 }
 
-/* 
-
-
-
-
-
-
-.main_button1:hover
-{
-    color :#ffc0cb;
+.contents_write{
+    height : 100px;
+    overflow:auto;
 }
 
-.main_button2:hover
+
+button:hover
 {
-    color :#ffc0cb;
+    background-color: #000;
 }
 
- */
+textarea{
+font-family: 'Do Hyeon', sans-serif;
+width:280px;
+color :rgb(255, 192, 203);
+font-size: 25px;
+background-color :transparent ;
+border: 2px solid rgb(255, 192, 203);
+resize:none;
+}
+
+.contents_write::-webkit-scrollbar {
+    width:3px;
+}
+
+.contents_write::-webkit-scrollbar-track
+{
+    background-color: transparent;
+}
+.contents_write::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgb(255, 192, 203);
+}
+
+.contents_write::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}

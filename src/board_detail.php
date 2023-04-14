@@ -4,7 +4,7 @@
     define("URL_HEADER", SRC_ROOT."board_header.php");
     include_once(URL_DB);
     //Request Parameter 획득 (GET)
-    // $http_method = $_SERVER["REQUEST_MENTHOD"];?????왜안하지???
+    // $http_method = $_SERVER["REQUEST_MENTHOD"]
     $arr_get = $_GET;
 
     //DB에서 게시글 정보 획득
@@ -22,18 +22,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/star.css">
+    <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/board_detail.css">
     <title>Detail</title>
 </head>
 <body>
-    <!-- <div id="layers">
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-    </div> -->
     <header>
         <?php include_once(URL_HEADER) ?>
         <h2 class="title">Details</h2>
@@ -47,7 +40,7 @@
             <div>게시글 제목</div> 
             <div><?php echo $result_info["board_title"] ?></div>
             <div>게시글 내용</div> 
-            <div><?php echo $result_info["board_contents"] ?></div>
+            <textarea class="contents_write"><?php echo $result_info["board_contents"] ?></textarea>
         </div>
         <button class= "main_button_1" type="button"><a href="board_update.php?board_no=<?php echo $result_info["board_no"] ?>">수정</a></button>
         <button class="main_button_2" type="button"><a href="board_delete.php?board_no=<?php echo $result_info["board_no"] ?>">삭제</a></button>

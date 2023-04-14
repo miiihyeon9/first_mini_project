@@ -1,46 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
-*
-{
-    text-align: center;
-    margin :0;
-}
 
 a
 {
     text-decoration: none;
-    font-size: 1.2em;
     font-weight: 900;
     position :relative;
     color : rgb(255, 192, 203);
 }
 
-h1 {
-    margin-top: 50px;
-    margin-bottom: 0;
-}
-
-h1 a{
-    font-family: 'DynaPuff', cursive;
-    font-size: 100px;
-    font-weight: 900;
-    text-shadow: -3px 0px rgb(255,192,203), 0px 3px rgb(255,192,203), 3px 0px rgb(255,192,203), 0px -3px rgb(255, 192, 203);
-    color: #000;
-}
-
-h2
-{
-    margin-top: 0px;
-    font-family: 'DynaPuff', cursive;
-    font-size: 60px;
-    font-weight: 900;
-    text-shadow: -3px 0px rgb(255,192,203), 0px 3px rgb(255,192,203), 3px 0px rgb(255,192,203), 0px -3px rgb(255,192,203);
-}
-
 main{
     width : 600px;
     height : 400px;
-    margin: 100px auto;
+    box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 50px auto;
     position : relative;
 }
 
@@ -50,10 +24,11 @@ main{
     top : -50px;
     right : 0;
     border : 2px solid rgb(255, 192, 203);
-    background-color: #000;
+    background-color: rgba(0,0,0,0.3);
     border-radius: 5px;
     font-size: 18px;
 }
+
 .list_button a 
 {
     color : rgb(255,192,203);
@@ -61,8 +36,9 @@ main{
 
 form
 {
-    margin : 100px auto;
+    margin : 0 auto;
     border : 2px solid rgb(255,192,203);
+    border-radius: 20px;
     background-color : rgba(0,0,0,0.5);
     display: grid; 
     grid-template-columns: 1fr 1fr;
@@ -78,9 +54,7 @@ label
     font-size: 1.3em;
     height: 30px;
     align-self: center;
-    
 }
-
 
 button
 {
@@ -91,7 +65,7 @@ button
     background-color : rgba(0,0,0,0.3);
     border-radius: 20px;
     font-weight: 900;
-    font-size: 1.1em;
+    font-size: 18px;
     color : rgb(255, 192, 203);
 }
 
@@ -101,58 +75,46 @@ input,textarea
     background-color: transparent;
     color :rgb(255, 192, 203);
     font-size: 1.3em;
-    outline:none;
+    border:2px solid rgb(255, 192, 203);
+    
 }
 
-
-
-/* 
-
-
-header
+textarea
 {
-    position :relative;
+    resize:none;
 }
 
-
-
-
-
-
-
-a
+button:hover
 {
-    color : rgba(255, 192, 203,0.7);
-    font-weight: 900;
-    text-decoration: none;
+    background-color: #000;
 }
 
-.list_button
+input:focus
 {
-    position : absolute;
-    top :-50px ;
-    right : 0;
-}
-
-
-textarea{
-    background-color :transparent ;
-    border: 1px solid rgba(255, 192, 203,0.7);
-}
-
-input{
-    background-color :transparent ;
-    border: 1px solid #000;
-}
-
-input:focus{
-    border:3px solid rgb(255, 192, 203);
+    border:3px solid rgb(255, 192, 203); 
     outline:none;
 }
 
 textarea:focus{
-    border:3px solid rgba(255, 192, 203);
+    border:3px solid rgb(255, 192, 203); 
     outline:none;
+} 
+
+
+.contents_write::-webkit-scrollbar {
+    width:3px;
 }
 
- */
+.contents_write::-webkit-scrollbar-track
+{
+    background-color: transparent;
+}
+.contents_write::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgb(255, 192, 203);
+}
+
+.contents_write::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}

@@ -308,6 +308,10 @@ function insert_board_info( &$param_array )
         $stmt = $conn->prepare( $sql );
         $stmt->execute( $arr_prepare );
         $result_cnt = $stmt->rowCount();
+        if($result_cnt !== 1)
+            {
+                throw new Exception ('rowCount ERROR');
+            }
         $conn->commit();
     }
     catch (Exception $e) 

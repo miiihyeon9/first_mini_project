@@ -38,46 +38,46 @@
     );
     $result_paging = select_board_info_paging($arr_prepare);
     
-    // 페이지 5칸씩 뒤로 이동 
-        if($page_num > 6)
-        {
-        $five_prev_page = $page_num - 5;
-        }else
-        {
-            $five_prev_page = 1;
-        }
+    // 페이지 5칸씩 앞으로 이동 
+    if($page_num > 6)
+    {
+    $five_prev_page = $page_num - 5;
+    }else
+    {
+        $five_prev_page = 1;
+    }
 
-    // 페이지 한칸씩 전으로 이동 
-        if($page_num > 1)
-        {
-            $prev_page = $page_num -1;
-        }
-        else
-        {
-            $prev_page = 1;
-        }
+    // 이전 페이지 이동
+    if($page_num > 1)
+    {
+        $prev_page = $page_num -1;
+    }
+    else
+    {
+        $prev_page = 1;
+    }
 
-    // 다음페이지 이동
-        if($page_num < $max_page_number)
-        {
-            $next_page = $page_num + 1;
-        }
-        else
-        {
-            $next_page = $max_page_number;
-        }
+    // 다음 페이지 이동
+    if($page_num < $max_page_number)
+    {
+        $next_page = $page_num + 1;
+    }
+    else
+    {
+        $next_page = $max_page_number;
+    }
 
-         // 페이지 5칸씩 뒤로 이동
-            $max_five_min_page_number = $max_page_number - 5 ; 
-            if($page_num < $max_five_min_page_number)
-            {
-                $ten_next_page = $page_num + 5;
-                    
-            }else
-            {
-                $ten_next_page = $max_page_number;
-            }
-            ?>
+    // 페이지 5칸씩 뒤로 이동
+    $max_five_min_page_number = $max_page_number - 5 ; 
+    if($page_num < $max_five_min_page_number)
+    {
+        $ten_next_page = $page_num + 5;
+            
+    }else
+    {
+        $ten_next_page = $max_page_number;
+    }
+    ?>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -115,7 +115,7 @@
                         <?php
                             foreach( $result_paging as $recode)
                             {
-                                $date_sub = mb_substr($recode["board_write_date"],0,10);        // 작성일 시간 지우기
+                                $date_sub = mb_substr($recode["board_write_date"],0,10);        // $date_sub = 작성일 시간부분 지우기
                                 ?>
                                 <tr class="board_list_row" >
                                     <td><?php echo $recode["board_no"] ?></td>
@@ -129,8 +129,7 @@
                     </tbody>
                 </table>
             </div> 
-        </main>
-        <footer>
+            
             <!-- 버튼 -->
             <div class="page_list" ><a class="list" href='board_list.php?page_num=<?php echo $five_prev_page ?>'> << </a></div>
             
@@ -154,7 +153,8 @@
                     <div class="page_list " ><a class="list" href='board_list.php?page_num=<?php echo $next_page; ?>'> > </a></div>
                     <div class="page_list" ><a class="list" href='board_list.php?page_num=<?php echo $ten_next_page ?>'> >> </a></div>
                 </div>
-            </footer>
-        </body>
-        </html>
-        
+        </main>
+                
+            </body>
+            </html>
+            

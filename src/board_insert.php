@@ -8,7 +8,7 @@
 
 
     if( $http_method === "POST" )
-    // array_key_exists() : array에 키가 존재하는지 확인하는 함수
+
     {
         $arr_post = $_POST;
         $result_cnt = insert_board_info( $arr_post );
@@ -35,13 +35,6 @@
     <link rel="stylesheet" href="./css/board_insert.css">
 </head>
 <body>
-    <!-- <div id="layers">
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-    </div> -->
     <header>
         <?php include_once(URL_HEADER) ?>
             <h2>Writing</h2>

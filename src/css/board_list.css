@@ -34,6 +34,9 @@ tbody
     width:600px;
     border-radius:10px;
     border : 2px solid rgb(255,192,203);
+    position : relative;
+    width:600px;
+    margin : 0 auto;
 }
 table
 {
@@ -45,26 +48,20 @@ table
     margin : 0 auto ;
     position: relative;
     border-style: hidden;
-
-
-
-
 }
-main
-{
-position : relative;
-width:600px;
-margin : 0 auto;
-}
+
+
 
 .write
 {
-position : absolute;
-top : -50px;
-right:0;
-border:2px solid rgb(255, 192, 203);
-background-color: rgba(0, 0, 0,0.5);
-border-radius: 5px;
+    position : absolute;
+    top : -50px;
+    padding :5px 10px;
+    right:0;
+    border:2px solid rgb(255, 192, 203);
+    background-color: rgba(0, 0, 0,0.5);
+    border-radius: 5px;
+    width : 75px;
 }
 
 .title
@@ -100,14 +97,6 @@ border-radius: 5px;
     color : rgb(255, 192, 203);
     font-family: 'Do Hyeon', sans-serif;
     font-size: 18px;
-}
-.write
-{
-    width : 75px;
-    border-radius: 5px;
-    position : absolute;
-    right:0;
-    padding :5px 10px;
 }
 
 

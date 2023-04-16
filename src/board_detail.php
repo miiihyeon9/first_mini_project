@@ -9,7 +9,7 @@
 
     //DB에서 게시글 정보 획득
     $result_info = select_board_info_no($arr_get["board_no"]);
-    // var_dump($result_info);
+
 
 
 ?>

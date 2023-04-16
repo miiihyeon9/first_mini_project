@@ -10,7 +10,7 @@ function db_conn( &$param_conn )
 {
     $host = "localhost"; // 원래는 아이피가 들어감
     $user = "root";      // user
-    $password = "0809";   //password
+    $password = "root506";   //password
     $name = "board";     // DB name
     $charset = "utf8mb4";    //charset
     $dns = "mysql:host=".$host.";dbname=".$name.";charset=".$charset;
@@ -225,7 +225,7 @@ function update_board_info_no( &$param_arr )
 
 
 //ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-// 함수명   : delte_board_info_no
+// 함수명   : delete_board_info_no
 // 기능     : 게시판 특정 게시글 정보 삭제플러그 갱신
 // 파라미터 : INT &$param_no
 // 리턴값   : INT/STRING    $result_cnt/ERRMSG

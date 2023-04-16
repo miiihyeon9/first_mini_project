@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 a
@@ -76,6 +76,7 @@ input,textarea
     color :rgb(255, 192, 203);
     font-size: 1.3em;
     border:2px solid rgb(255, 192, 203);
+    border-radius: 20px;
     
 }
 

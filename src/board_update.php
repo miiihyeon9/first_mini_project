@@ -65,7 +65,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modify</title>
+    <title>Board-modifying</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -76,7 +76,7 @@
 
     <header>
         <?php include_once(URL_HEADER) ?>
-        <h2>MODIFY</h2>
+        <h2>Modifying</h2>
     </header>
     <main>
         <button class="list_button"><a href="board_list.php">LIST</a></button>
@@ -85,10 +85,10 @@
             <input type="text" id="bno" name="board_no" value = "<?php echo $result_info['board_no'] ?>" readonly >
             
             <label for= "title" >게시글 제목</label>
-            <input type="text" id = "title" name="board_title" value = "<?php echo $result_info['board_title'] ?>" >
+            <input type="text" id = "title" name="board_title" maxlength="100" value = "<?php echo $result_info['board_title'] ?>" >
             
             <label for="contents">게시글 내용</label>
-            <textarea class="contents_write" id="contents" name="board_contents" value = "<?php echo $result_info['board_contents'] ?>" ></textarea>
+            <textarea class="contents_write" id="contents" name="board_contents" maxlength="1000" value = "<?php echo $result_info['board_contents'] ?>" ></textarea>
             <button type="submit">수정</button>
             <button><a href="board_detail.php?board_no=<?php echo $result_info["board_no"] ?>">
                 취소

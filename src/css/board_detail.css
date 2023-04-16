@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 a
@@ -97,12 +96,21 @@ button:hover
 
 textarea{
 font-family: 'Do Hyeon', sans-serif;
-width:280px;
+width:250px;
+margin:0 auto;
 color :rgb(255, 192, 203);
 font-size: 25px;
 background-color :transparent ;
 border: 2px solid rgb(255, 192, 203);
 resize:none;
+border-radius: 20px;
+}
+
+
+
+textarea:focus{
+    border:3px solid rgb(255, 192, 203); 
+    outline:none;
 }
 
 .contents_write::-webkit-scrollbar {

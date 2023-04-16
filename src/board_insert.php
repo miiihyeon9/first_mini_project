@@ -30,7 +30,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Board-writing</title>
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/board_insert.css">
 </head>
@@ -44,16 +44,16 @@
     </div> -->
     <header>
         <?php include_once(URL_HEADER) ?>
-            <h2>Write</h2>
+            <h2>Writing</h2>
         </header>
     <main>
         <form method="post" action="board_insert.php">
 
             <label for= "title" >게시글 제목</label>
-            <input type="text" id = "title" name="board_title">
+            <input type="text" id = "title" name="board_title" maxlength="100">
             
             <label for="contents">게시글 내용</label>
-            <textarea class="contents_write" id="contents" name="board_contents" ></textarea>
+            <textarea class="contents_write" id="contents" name="board_contents" maxlength="1000"></textarea>
             
             <button type="submit">작성</button>
             <button><a href="board_list.php">취소</a></button>

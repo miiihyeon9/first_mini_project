@@ -101,8 +101,8 @@
             <h2>List</h2>
         </header>
         <main>
-            <button class="write" type="button"><a class="write_link" href="board_insert.php">글 쓰기</a></button>
             <div class="table_border">   
+            <button class="write" type="button"><a class="write_link" href="board_insert.php">글 쓰기</a></button>
                 <table>
                     <thead>
                         <tr class="table_col">

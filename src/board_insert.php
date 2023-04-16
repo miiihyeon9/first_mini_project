@@ -50,7 +50,7 @@
         <form method="post" action="board_insert.php">
 
             <label for= "title" >게시글 제목</label>
-            <input type="text" id = "title" name="board_title" maxlength="100" required >
+            <input type="text" id = "title" name="board_title" required maxlength="100">
             
             <label for="contents">게시글 내용</label>
             <textarea class="contents_write" id="contents" name="board_contents" maxlength="1000"></textarea>

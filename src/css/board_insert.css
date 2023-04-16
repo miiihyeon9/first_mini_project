@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DynaPuff&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 header
 {
@@ -84,16 +84,19 @@ input,textarea
     font-size: 25px;
     background-color :transparent ;
     border: 2px solid rgb(255, 192, 203);
+    border-radius: 20px;
 }
 
 input:focus
 {
     border:3px solid rgb(255, 192, 203); 
+    border-radius: 20px;
     outline:none;
 }
 
 textarea:focus{
     border:3px solid rgb(255, 192, 203); 
+    border-radius: 20px;
     outline:none;
 } 
 

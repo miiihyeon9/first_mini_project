@@ -24,7 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/board_detail.css">
-    <title>Detail</title>
+    <title>Board-details</title>
 </head>
 <body>
     <header>
@@ -40,7 +40,7 @@
             <div>게시글 제목</div> 
             <div><?php echo $result_info["board_title"] ?></div>
             <div>게시글 내용</div> 
-            <textarea class="contents_write"><?php echo $result_info["board_contents"] ?></textarea>
+            <textarea readonly class="contents_write"><?php echo $result_info["board_contents"]  ?></textarea>
         </div>
         <button class= "main_button_1" type="button"><a href="board_update.php?board_no=<?php echo $result_info["board_no"] ?>">수정</a></button>
         <button class="main_button_2" type="button"><a href="board_delete.php?board_no=<?php echo $result_info["board_no"] ?>">삭제</a></button>

@@ -101,7 +101,7 @@
             <h2>List</h2>
         </header>
         <main>
-            <div class="table_border">   
+            <div class="list_box">   
             <button class="write" type="button"><a class="write_link" href="board_insert.php">글 쓰기</a></button>
                 <table>
                     <thead>

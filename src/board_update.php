@@ -6,7 +6,7 @@
     include_once(URL_DB);
     
     
-// var_dump($_SERVER,$_GET,$_POST);
+
     // request method를 가져옴
     $http_method = $_SERVER["REQUEST_METHOD"];
     // get이나 post로 넘어옴 
@@ -88,7 +88,7 @@
             <input type="text" id = "title" name="board_title" required maxlength="100" value = "<?php echo $result_info['board_title'] ?>" >
             
             <label for="contents">게시글 내용</label>
-            <textarea class="contents_write" id="contents" name="board_contents" maxlength="1000" value = "<?php echo $result_info['board_contents'] ?>" ></textarea>
+            <textarea class="contents_write" id="contents" name="board_contents" maxlength="1000" value = "<?php echo $result_info['board_contents'] ?>" ><?php echo $result_info['board_contents'] ?></textarea>
             <button type="submit">수정</button>
             <button><a href="board_detail.php?board_no=<?php echo $result_info["board_no"] ?>">
                 취소
